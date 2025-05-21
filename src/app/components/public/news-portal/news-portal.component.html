@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <div class="row">
+    <div *ngFor="let bloque of noticias" class="row">
+      <div *ngFor="let noticia of bloque.articles" class="col-md-4">
+        <div class="card mb-4">
+          <img
+            *ngIf="noticia.mainMedia?.length > 0"
+            [src]="noticia.mainMedia[0].gallery?.url"
+            class="card-img-top"
+            alt="Imagen de la noticia"
+          >
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-capitalize">{{ noticia.title }}</h5>
+            <p class="card-text text-muted">{{ noticia.categoryLabel }}</p>
+            <p class="card-text">
+              {{ noticia.mainMedia[0].gallery?.alt || 'Sin descripción disponible.' }}
+            </p>
+            <a class="btn btn-primary mt-auto" [href]="noticia.url" target="_blank">Leer más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
