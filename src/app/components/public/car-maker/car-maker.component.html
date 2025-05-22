@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <h2 class="text-center">🚗 Card Maker - Autos</h2>
+
+  <div class="form-group mt-3">
+    <label for="marca">Seleccione una marca:</label>
+    <select [(ngModel)]="marcaSeleccionada" (change)="cargarModelos()" class="form-control">
+      <option value="" disabled selected>Elige una marca</option>
+      <option *ngFor="let marca of marcas" [value]="marca.id">{{ marca.name }}</option>
+    </select>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-4 mb-3" *ngFor="let modelo of modelos">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">MODELO: {{ modelo.name }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
