@@ -1,0 +1,58 @@
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white text-center">
+      <h5 class="mb-0">🌍 Conversor de Divisas</h5>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="mb-3">
+          <label for="amount" class="form-label">Cantidad</label>
+          <input
+            type="number"
+            id="amount"
+            class="form-control"
+            placeholder="Ingrese el monto"
+            [(ngModel)]="amount"
+            name="amount"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="fromCurrency" class="form-label">De</label>
+          <select
+            class="form-select"
+            id="fromCurrency"
+            [(ngModel)]="fromCurrency"
+            name="fromCurrency"
+          >
+            <option *ngFor="let key of (currencies | keyvalue)" [value]="key.key">
+              {{ key.key }} - {{ key.value }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="toCurrency" class="form-label">A</label>
+          <select
+            class="form-select"
+            id="toCurrency"
+            [(ngModel)]="toCurrency"
+            name="toCurrency"
+          >
+            <option *ngFor="let key of (currencies | keyvalue)" [value]="key.key">
+              {{ key.key }} - {{ key.value }}
+            </option>
+          </select>
+        </div>
+
+        <button type="button" class="btn btn-warning w-100" (click)="convertir()">
+          Convertir
+        </button>
+      </form>
+
+      <div *ngIf="result !== null" class="alert alert-success text-center mt-4">
+        <strong>{{ amount }} {{ fromCurrency }} = {{ result | number:'1.2-2' }} {{ toCurrency }}</strong>
+      </div>
+    </div>
+  </div>
+</div>
